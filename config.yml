@@ -5,6 +5,7 @@ download:
     encoding: shiftjis
 
 loto6:
+    ball_count: 43
     url: https://login.paypay-bank.co.jp/lottery/co/loto6jnb.csv
     table: LOTO6
     primary_key: NUMBER
@@ -23,6 +24,7 @@ loto6:
     select_count: 6
 
 loto7:
+    ball_count: 44
     url: https://login.paypay-bank.co.jp/lottery/co/loto7jnb.csv
     table: LOTO7
     primary_key: NUMBER
