@@ -1,0 +1,43 @@
+common:
+    database: LOTO.db
+
+download:
+    encoding: shiftjis
+
+loto6:
+    url: https://login.paypay-bank.co.jp/lottery/co/loto6jnb.csv
+    table: LOTO6
+    primary_key: NUMBER
+    columns:
+        NUMBER: 回号
+        BALL_1: 抽せん数字１
+        BALL_2: 抽せん数字２
+        BALL_3: 抽せん数字３
+        BALL_4: 抽せん数字４
+        BALL_5: 抽せん数字５
+        BALL_6: 抽せん数字６
+        BONUS_1: ボーナス数字
+    csv: loto6.csv
+    low_count: 2
+    hi_count: 4
+    select_count: 6
+
+loto7:
+    url: https://login.paypay-bank.co.jp/lottery/co/loto7jnb.csv
+    table: LOTO7
+    primary_key: NUMBER
+    columns:
+        NUMBER: 回号
+        BALL_1: 抽せん数字１
+        BALL_2: 抽せん数字２
+        BALL_3: 抽せん数字３
+        BALL_4: 抽せん数字４
+        BALL_5: 抽せん数字５
+        BALL_6: 抽せん数字６
+        BALL_7: 抽せん数字７
+        BONUS_1: ボーナス数字１
+        BONUS_2: ボーナス数字２
+    csv: loto7.csv
+    low_count: 2
+    hi_count: 4
+    select_count: 6

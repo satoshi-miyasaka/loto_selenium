@@ -1,0 +1,2 @@
+LOTO6とLOTO7の予想をして、SELELNIUMで購入する
+
