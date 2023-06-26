@@ -16,8 +16,8 @@ def create_table(conn, config):
 def insert_data(conn, config):
     columns=[name for name in config['columns'].keys()]
     df = pandas.read_csv(config['csv'], header=None)
-    df2 = df.set_axis(columns, axis='columns')
-    df2.to_sql(config['table'], con=conn, if_exists='append', index=False)
+    df = df.set_axis(columns, axis='columns')
+    df.to_sql(config['table'], con=conn, if_exists='append', index=False)
 
 def close(conn):
     conn.close()

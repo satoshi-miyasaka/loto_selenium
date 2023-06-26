@@ -18,25 +18,19 @@ class UpdateData:
         primary_key = self.config['primary_key']
         questions = ','.join(['?' for x in range(len(self.config['columns'].keys()))])
 
-        max_sql = f'SELECT MAX({primary_key}) FROM {table}'
-        insert_sql = f'INSERT INTO {table} VALUES({questions})'
-
-        df = pandas.read_csv(url, encoding=self.encoding)
         cur = self.conn.cursor()
-        cur.execute(max_sql)
+        cur.execute(f'SELECT MAX({primary_key}) FROM {table}')
         max_number = cur.fetchall()[0][0]
-        for index, row in df.iterrows():
-            key = row[self.config['columns'][primary_key]]
-            key = int(re.search(r'\d+', key)[0])
-            if key <= max_number:
-                continue
 
-            data = [re.search(r'\d+', str(row[csv_key]))[0]
-                    for csv_key in self.config['columns'].values()]
+        columns=[name for name in self.config['columns'].keys()]
+        df = pandas.read_csv(url, encoding=self.encoding)
+        df = df[[name for name in self.config['columns'].values()]]
+        df = df.set_axis(columns, axis='columns')
+        df = df.replace(r'第(\d+)回', r'\1', regex=True)
+        df = df.astype(int)
+        df = df[df[primary_key] > max_number]
 
-            cur.execute(insert_sql, data)
-
-        self.conn.commit()
+        df.to_sql(table, con=self.conn, if_exists='append', index=False)
 
     def __del__(self):
         self.conn.close()
