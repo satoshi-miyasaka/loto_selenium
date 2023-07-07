@@ -16,7 +16,6 @@ class UpdateData:
         url = self.config['url']
         table = self.config['table']
         primary_key = self.config['primary_key']
-        questions = ','.join(['?' for x in range(len(self.config['columns'].keys()))])
 
         cur = self.conn.cursor()
         cur.execute(f'SELECT MAX({primary_key}) FROM {table}')
@@ -30,7 +29,7 @@ class UpdateData:
         df = df.astype(int)
         df = df[df[primary_key] > max_number]
 
-        df.to_sql(table, con=self.conn, if_exists='append', index=False)
+        print('{}に{}件登録しました'.format(self.loto, df.to_sql(table, con=self.conn, if_exists='append', index=False)))
 
     def __del__(self):
         self.conn.close()

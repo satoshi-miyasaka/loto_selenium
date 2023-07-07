@@ -8,6 +8,7 @@
 
 import MySQLdb
 import pandas
+import loto_selenium
 
 class LotoPredict:
     all_select = 2
@@ -15,25 +16,23 @@ class LotoPredict:
     total_select = 6
     last_select = 0
 
-    def __init__(self):
-        self.conn = MySQLdb.connect(
-            host='loto',
-            user='loto',
-            passwd='loto',
-            db='loto')
+    def __init__(self, config):
+        conn = sqlite3.connect(config.database)
+        df = pandas.read_sql(f'SELECT * FROM {config.table}', conn)
+        conn.close()
+
+        self.loto_shukei = LotoShukei(df, config.ball_count)
 
     def predict(self):
 
         # STEP 1
-        ball_count = self.config['ball_count']
-        df = get_table_all()
+        # total
+        ball_count = self.config.ball_count
 
-        list = [(df == i +1).sum().sum() for i in range(ball_count)]
-        dict = {str(i +1):list[i] for i in range(ball_count)}
-        sort_list = [int(n) for n, m in sorted(dict.items(), key=lambda x:x[1])]
-        marge_list = [sort_list[:all_select]]
+        marge_list = list(get_worst(top=n))
 
         # STEP 2
+        # recently
         list = [i +1 for i in range(ball_count)]
 
         max_row = len(df)
