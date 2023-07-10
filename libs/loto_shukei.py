@@ -50,17 +50,15 @@ class LotoShukei:
         for row in reverse:
             for col in row:
                 list[col -1] += 1
-            if limit >= top.count(0):
+            if top >= list.count(0):
                 return tuple([i +1 for i in range(self.count) if 0 == list[i]])
 
     def get_best_4_top(self, limit:int):
-        all_table = self.balls
-        list = [0] * self.count
-        for row in all_table:
-            for col in row:
-                list[col -1] += 1
-            if limit >= top.count(0):
-                return tuple([i +1 for i in range(self.count) if 0 == list[i]])
+        ball = self.get_count(min=-10)
+        list = []
+        for k, v in sorted(ball.items(), reverse=True, key=lambda x:x[1]):
+            list.append(k)
+        return list[:limit]
 
 if __name__ == '__main__':
     import sqlite3
@@ -71,4 +69,4 @@ if __name__ == '__main__':
     conn.close()
 
     loto_shukei = LotoShukei(df, 43)
-    print(loto_shukei.get_best())
+    print(loto_shukei.get_best_4_top(4))
