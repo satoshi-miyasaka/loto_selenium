@@ -69,4 +69,4 @@ if __name__ == '__main__':
     conn.close()
 
     loto_shukei = LotoShukei(df, 43)
-    print(loto_shukei.get_best_4_top(4))
+    print(loto_shukei.get_worst_4_top(4))
