@@ -6,13 +6,13 @@
 # 最近出現率の高いボールをｏ個選ぶ
 # ｎとｍのボールに重複がある場合、重複したボール数分ｏが増える
 
-import loto_shukei
+from . import loto_shukei
 import pandas
 import sqlite3
 import yaml
 
 class LotoPredict:
-    loto = 'loto6'
+    loto = 'None'
 
     def __init__(self, config):
         self.config = config[self.loto]
@@ -44,9 +44,15 @@ class LotoPredict:
 
         return marge_list + temp_list
 
+class Loto6Predict(LotoPredict):
+    loto = 'loto6'
+
+class Loto7Predict(LotoPredict):
+    loto = 'loto7'
+
 if __name__ == '__main__':
     with open('config.yml', 'r') as yml:
         config = yaml.safe_load(yml)
 
-    predict = LotoPredict(config)
+    predict = Loto7Predict(config)
     print(predict.predict())

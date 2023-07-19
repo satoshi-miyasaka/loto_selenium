@@ -1,1 +1,1 @@
-__all__ = ['loto_shukei']
+__all__ = ['loto_buy', 'loto_predict', 'loto_shukei', 'update_data']

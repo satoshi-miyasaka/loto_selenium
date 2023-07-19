@@ -24,7 +24,7 @@ loto6:
     select_count: 6
 
 loto7:
-    ball_count: 44
+    ball_count: 37
     url: https://login.paypay-bank.co.jp/lottery/co/loto7jnb.csv
     table: LOTO7
     primary_key: NUMBER
@@ -40,6 +40,6 @@ loto7:
         BONUS_1: ボーナス数字１
         BONUS_2: ボーナス数字２
     csv: loto7.csv
-    low_count: 2
+    low_count: 3
     hi_count: 4
-    select_count: 6
+    select_count: 7

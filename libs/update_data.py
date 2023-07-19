@@ -40,10 +40,12 @@ class UpdateDataLoto6(UpdateData):
 class UpdateDataLoto7(UpdateData):
     loto = 'loto7'
 
-with open('config.yml', 'r') as yml:
-    config = yaml.safe_load(yml)
+if __name__ == '__main__':
 
-update_data = UpdateDataLoto6(config)
-update_data.update()
-update_data = UpdateDataLoto7(config)
-update_data.update()
+    with open('config.yml', 'r') as yml:
+        config = yaml.safe_load(yml)
+
+    update_data = UpdateDataLoto6(config)
+    update_data.update()
+    update_data = UpdateDataLoto7(config)
+    update_data.update()
