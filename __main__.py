@@ -1,7 +1,10 @@
 from libs import *
 import yaml
+import os
 
-with open('config.yml', 'r') as yml:
+base = os.path.dirname(__file__)
+
+with open(base + '/config.yml', 'r') as yml:
     config = yaml.safe_load(yml)
 
 update_data.UpdateDataLoto6(config).update()

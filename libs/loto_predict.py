@@ -42,7 +42,9 @@ class LotoPredict:
             if self.config['select_count'] <= len(set(marge_list + temp_list)): break
             limit_up += 1
 
-        return marge_list + temp_list
+        temp_list = [x for x in temp_list if not (x in marge_list)]
+
+        return marge_list + temp_list[:self.config['select_count'] - len(marge_list)]
 
 class Loto6Predict(LotoPredict):
     loto = 'loto6'

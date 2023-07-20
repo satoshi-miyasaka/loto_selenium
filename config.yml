@@ -1,5 +1,5 @@
 common:
-    database: LOTO.db
+    database: loto_selenium/LOTO.db
 
 download:
     encoding: shiftjis
@@ -19,9 +19,9 @@ loto6:
         BALL_6: 抽せん数字６
         BONUS_1: ボーナス数字
     csv: loto6.csv
-    low_count: 2
+    low_count: 3
     hi_count: 4
-    select_count: 6
+    select_count: 7
 
 loto7:
     ball_count: 37
@@ -40,6 +40,6 @@ loto7:
         BONUS_1: ボーナス数字１
         BONUS_2: ボーナス数字２
     csv: loto7.csv
-    low_count: 3
+    low_count: 4
     hi_count: 4
-    select_count: 7
+    select_count: 8
