@@ -1,0 +1,53 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Loto6Predict	libs/loto_predict.py	/^class Loto6Predict(LotoPredict):$/;"	c
+Loto7Predict	libs/loto_predict.py	/^class Loto7Predict(LotoPredict):$/;"	c
+LotoPredict	libs/loto_predict.py	/^class LotoPredict:$/;"	c
+LotoShukei	libs/loto_shukei.py	/^class LotoShukei:$/;"	c
+UpdateData	libs/update_data.py	/^class UpdateData:$/;"	c
+UpdateDataLoto6	libs/update_data.py	/^class UpdateDataLoto6(UpdateData):$/;"	c
+UpdateDataLoto7	libs/update_data.py	/^class UpdateDataLoto7(UpdateData):$/;"	c
+__all__	libs/__init__.py	/^__all__ = ['loto_buy', 'loto_predict', 'loto_shukei', 'update_data']$/;"	v
+__del__	libs/update_data.py	/^    def __del__(self):$/;"	m	class:UpdateData	file:
+__get_rank	libs/loto_shukei.py	/^    def __get_rank(self, reverse:bool, min:int=0, max:int=None, top:int=10):$/;"	m	class:LotoShukei	file:
+__init__	libs/loto_predict.py	/^    def __init__(self, config):$/;"	m	class:LotoPredict
+__init__	libs/loto_shukei.py	/^    def __init__(self, df, count:int):$/;"	m	class:LotoShukei
+__init__	libs/update_data.py	/^    def __init__(self, config):$/;"	m	class:UpdateData
+base	__main__.py	/^base = os.path.dirname(__file__)$/;"	v
+close	libs/create_table.py	/^def close(conn):$/;"	f
+config	__main__.py	/^    config = yaml.safe_load(yml)$/;"	v
+config	libs/loto_predict.py	/^        config = yaml.safe_load(yml)$/;"	v
+config	libs/update_data.py	/^        config = yaml.safe_load(yml)$/;"	v
+conn	libs/create_table.py	/^conn = create_database(config)$/;"	v
+conn	libs/loto_shukei.py	/^    conn = sqlite3.connect('LOTO.db')$/;"	v	class:LotoShukei
+create_database	libs/create_table.py	/^def create_database(config):$/;"	f
+create_table	libs/create_table.py	/^def create_table(conn, config):$/;"	f
+df	libs/loto_shukei.py	/^    df = pandas.read_sql('SELECT * FROM LOTO6', conn)$/;"	v	class:LotoShukei
+get_best	libs/loto_shukei.py	/^    def get_best(self, min:int=0, max:int=None, top:int=10):$/;"	m	class:LotoShukei
+get_best_4_top	libs/loto_shukei.py	/^    def get_best_4_top(self, limit:int):$/;"	m	class:LotoShukei
+get_count	libs/loto_shukei.py	/^    def get_count(self, min:int=0, max:int=-1):$/;"	m	class:LotoShukei
+get_max_index	libs/loto_shukei.py	/^    def get_max_index(self):$/;"	m	class:LotoShukei
+get_range	libs/loto_shukei.py	/^    def get_range(self, min:int=0, max:int=None):$/;"	m	class:LotoShukei
+get_worst	libs/loto_shukei.py	/^    def get_worst(self, min:int=0, max:int=None, top:int=10):$/;"	m	class:LotoShukei
+get_worst_4_top	libs/loto_shukei.py	/^    def get_worst_4_top(self, top:int):$/;"	m	class:LotoShukei
+insert_data	libs/create_table.py	/^def insert_data(conn, config):$/;"	f
+list	libs/loto_shukei.py	/^    list = loto_shukei.make_box_list([1, 2, 3, 4, 5, 6, 7], 2)$/;"	v	class:LotoShukei
+loto	libs/loto_predict.py	/^    loto = 'None'$/;"	v	class:LotoPredict
+loto	libs/loto_predict.py	/^    loto = 'loto6'$/;"	v	class:Loto6Predict
+loto	libs/loto_predict.py	/^    loto = 'loto7'$/;"	v	class:Loto7Predict
+loto	libs/update_data.py	/^    loto = 'loto6'$/;"	v	class:UpdateDataLoto6
+loto	libs/update_data.py	/^    loto = 'loto7'$/;"	v	class:UpdateDataLoto7
+loto	libs/update_data.py	/^    loto = 'none'$/;"	v	class:UpdateData
+loto_shukei	libs/loto_shukei.py	/^    loto_shukei = LotoShukei(df, 43)$/;"	v	class:LotoShukei
+make_box_list	libs/loto_shukei.py	/^    def make_box_list(self, list, sc:int=1):$/;"	m	class:LotoShukei
+predict	__main__.py	/^predict = loto_predict.Loto6Predict(config)$/;"	v
+predict	__main__.py	/^predict = loto_predict.Loto7Predict(config)$/;"	v
+predict	libs/loto_predict.py	/^    def predict(self):$/;"	m	class:LotoPredict
+predict	libs/loto_predict.py	/^    predict = Loto7Predict(config)$/;"	v
+update	libs/update_data.py	/^    def update(self):$/;"	m	class:UpdateData
+update_data	libs/update_data.py	/^    update_data = UpdateDataLoto6(config)$/;"	v
+update_data	libs/update_data.py	/^    update_data = UpdateDataLoto7(config)$/;"	v

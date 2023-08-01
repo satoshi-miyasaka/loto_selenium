@@ -1,5 +1,6 @@
 import collections
 import itertools
+import copy
 
 class LotoShukei:
     def __init__(self, df, count:int):
@@ -50,8 +51,9 @@ class LotoShukei:
         for row in reverse:
             for col in row:
                 list[col -1] += 1
-            if top >= list.count(0):
-                return tuple([i +1 for i in range(self.count) if 0 == list[i]])
+            if top+1 >= list.count(0):
+                l = [i +1 for i in range(self.count) if 0 == list[i]]
+                return tuple(l[:top])
 
     def get_best_4_top(self, limit:int):
         ball = self.get_count(min=-10)
@@ -59,6 +61,28 @@ class LotoShukei:
         for k, v in sorted(ball.items(), reverse=True, key=lambda x:x[1]):
             list.append(k)
         return list[:limit]
+
+    def make_box_list(self, list, sc:int=1):
+        sc -= 1
+        if 0 > sc:
+            return [list]
+
+        temp_list =[]
+        for i in list:
+            copy_list = copy.copy(list)
+            copy_list.remove(i)
+            temp_list.append(copy_list)
+
+        temp_list2 =[]
+        for l in temp_list:
+            for l2 in self.make_box_list(l, sc):
+                temp_list2.append(l2)
+
+        ret_list =[]
+        for l in temp_list2:
+            if not l in ret_list: ret_list.append(l)
+
+        return ret_list
 
 if __name__ == '__main__':
     import sqlite3
@@ -69,4 +93,5 @@ if __name__ == '__main__':
     conn.close()
 
     loto_shukei = LotoShukei(df, 43)
-    print(loto_shukei.get_worst_4_top(4))
+    list = loto_shukei.make_box_list([1, 2, 3, 4, 5, 6, 7], 2)
+    print(list)

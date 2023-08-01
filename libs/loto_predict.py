@@ -1,10 +1,4 @@
 #!/bin/python3
-# 全体から最近出現率の低いボールをｎ個
-# 最近出現率が低いボールをｍ個
-# 選ぶボール数がｌ個として
-# l - (n + m) = o で計算し、
-# 最近出現率の高いボールをｏ個選ぶ
-# ｎとｍのボールに重複がある場合、重複したボール数分ｏが増える
 
 from . import loto_shukei
 import pandas
@@ -17,6 +11,7 @@ class LotoPredict:
     def __init__(self, config):
         self.config = config[self.loto]
         conn = sqlite3.connect(config['common']['database'])
+        table = self.config['table']
         df = pandas.read_sql(f'SELECT * FROM {self.config["table"]}', conn)
         conn.close()
 
